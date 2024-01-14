@@ -50,8 +50,8 @@ def get_default_config():
             problem="graph_edit_distance",
             dataset_params=dict(
                 # always generate graphs with 20 nodes and p_edge=0.2.
-                n_nodes_range=[20, 20],
-                p_edge_range=[0.2, 0.2],
+                n_nodes_range=[100, 500],
+                p_edge_range=[0.2, 0.4],
                 n_changes_positive=1,
                 n_changes_negative=2,
                 validation_dataset_size=1000,
@@ -72,7 +72,7 @@ def get_default_config():
             # Add gradient clipping to avoid large gradients.
             clip_value=10.0,
             # Increase this to train longer.
-            n_training_steps=200000,
+            n_training_steps=1000,
             # Print training information every this many training steps.
             print_after=100,
             # Evaluate on validation set every `eval_after * print_after` steps.

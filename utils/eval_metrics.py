@@ -2,6 +2,7 @@ import numpy as np
 from munkres import Munkres
 from sklearn import metrics
 from sklearn.metrics.cluster import normalized_mutual_info_score as NMI
+from sklearn.metrics import adjusted_rand_score as ARI
 
 
 def cluster_acc(y_true, y_pred):
@@ -57,5 +58,6 @@ def cluster_acc(y_true, y_pred):
 def eval_metrics(y_true, y_pred):
     nmi = NMI(y_true, y_pred)
     acc = cluster_acc(y_true, y_pred)
+    ari = ARI(y_true, y_pred)
 
-    return acc, nmi
+    return acc, nmi, ari

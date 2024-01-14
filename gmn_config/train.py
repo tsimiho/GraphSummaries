@@ -45,6 +45,7 @@ node_feature_dim = first_batch_graphs.node_features.shape[-1]
 edge_feature_dim = first_batch_graphs.edge_features.shape[-1]
 
 model, optimizer = build_model(config, node_feature_dim, edge_feature_dim)
+model.load_state_dict(torch.load("model64.pth"))
 model.to(device)
 
 accumulated_metrics = collections.defaultdict(list)
@@ -199,4 +200,4 @@ for i_iter in range(config["training"]["n_training_steps"]):
         print("iter %d, %s, time %.2fs" % (i_iter + 1, info_str, time.time() - t_start))
         t_start = time.time()
 
-torch.save(model.state_dict(), "model64new.pth")
+torch.save(model.state_dict(), "model64v2.pth")
